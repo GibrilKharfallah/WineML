@@ -17,16 +17,16 @@ st.caption("Projet ML : exploration, préprocessing, modélisation (SMOTE + pipe
 with st.expander("📌 Contexte et objectif", expanded=True):
     st.markdown(
         """
-**Données :** UCI Wine Quality (rouge & blanc), variables physico-chimiques + `wine type`.
+        **Données :** UCI Wine Quality (rouge & blanc), variables physico-chimiques + `wine type`.
 
-**Objectif :** prédire une **qualité binaire** :
-- `1` si `quality >= 7` (vin “bon”)
-- `0` sinon
+        **Objectif :** prédire une **qualité binaire** :
+        - `1` si `quality >= 7` (vin “bon”)
+        - `0` sinon
 
-**Important (anti data leakage) :**
-- Split Train/Test **avant** tout `StandardScaler` / `SMOTE`
-- Standardisation et SMOTE sont dans un **Pipeline** entraîné uniquement sur le train.
-"""
+        **Important (anti data leakage) :**
+        - Split Train/Test **avant** tout `StandardScaler` / `SMOTE`
+        - Standardisation et SMOTE sont dans un **Pipeline** entraîné uniquement sur le train.
+        """
     )
 
 st.sidebar.header("📂 Chargement des données")
