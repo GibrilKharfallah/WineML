@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -11,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🍷 Dashboard Machine Learning — Wine Quality (binaire)")
+st.title("🍷 Dashboard Machine Learning — Wine Quality")
 st.caption("Projet ML : exploration, préprocessing, modélisation (SMOTE + pipelines), évaluation et interprétabilité.")
 
 with st.expander("📌 Contexte et objectif", expanded=True):
@@ -29,22 +28,14 @@ with st.expander("📌 Contexte et objectif", expanded=True):
         """
     )
 
-st.sidebar.header("📂 Chargement des données")
-use_upload = st.sidebar.toggle("Uploader mes CSV (sinon chemins par défaut)", value=False)
-
-uploaded_red = uploaded_white = None
-if use_upload:
-    uploaded_red = st.sidebar.file_uploader("winequality-red.csv (séparateur ;)", type=["csv"])
-    uploaded_white = st.sidebar.file_uploader("winequality-white.csv (séparateur ;)", type=["csv"])
-
 @st.cache_data(show_spinner=False)
-def get_data(ur, uw):
-    df = load_wine_data(uploaded_red=ur, uploaded_white=uw)
+def get_data():
+    df = load_wine_data()
     df = add_target_quality_binary(df, threshold=7)
     return df
 
 try:
-    df = get_data(uploaded_red, uploaded_white)
+    df = get_data()
 except Exception as e:
     st.error("Impossible de charger les données. Vérifie les chemins par défaut ou uploade les CSV.")
     st.exception(e)

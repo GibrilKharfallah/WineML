@@ -25,9 +25,9 @@ c5.metric("ROC-AUC", f"{m.get('roc_auc', float('nan')):.3f}")
 st.subheader("Matrice de confusion")
 cm = art.cm
 cm_fig = px.imshow(cm, text_auto=True, aspect="auto",
-                   labels=dict(x="Prédit", y="Réel"),
-                   x=["0","1"], y=["0","1"],
-                   title="Confusion Matrix")
+                    labels=dict(x="Prédit", y="Réel"),
+                    x=["0","1"], y=["0","1"],
+                    title="Confusion Matrix")
 st.plotly_chart(cm_fig, use_container_width=True)
 
 st.subheader("Courbe ROC")

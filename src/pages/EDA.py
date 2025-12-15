@@ -8,20 +8,13 @@ from utils import load_wine_data, add_target_quality_binary
 st.set_page_config(page_title="EDA • Wine Quality", page_icon="📊", layout="wide")
 st.title("📊 EDA — Exploration des données")
 
-st.sidebar.header("📂 Données")
-use_upload = st.sidebar.toggle("Uploader mes CSV (sinon chemins par défaut)", value=False)
-uploaded_red = uploaded_white = None
-if use_upload:
-    uploaded_red = st.sidebar.file_uploader("winequality-red.csv", type=["csv"])
-    uploaded_white = st.sidebar.file_uploader("winequality-white.csv", type=["csv"])
-
 @st.cache_data(show_spinner=False)
-def get_data(ur, uw):
-    df = load_wine_data(uploaded_red=ur, uploaded_white=uw)
+def get_data():
+    df = load_wine_data()
     df = add_target_quality_binary(df, threshold=7)
     return df
 
-df = get_data(uploaded_red, uploaded_white)
+df = get_data()
 
 st.markdown("### 1) Statistiques descriptives")
 st.dataframe(df.describe(include="all").T, use_container_width=True)

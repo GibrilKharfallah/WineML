@@ -32,20 +32,13 @@ model_name = st.sidebar.selectbox(
 threshold = st.sidebar.slider("Seuil qualité → classe 1 si quality ≥", 5, 8, 7, 1)
 test_size = st.sidebar.slider("Taille du test", 0.1, 0.4, 0.2, 0.05)
 
-st.sidebar.header("📂 Données")
-use_upload = st.sidebar.toggle("Uploader mes CSV (sinon chemins par défaut)", value=False)
-uploaded_red = uploaded_white = None
-if use_upload:
-    uploaded_red = st.sidebar.file_uploader("winequality-red.csv", type=["csv"])
-    uploaded_white = st.sidebar.file_uploader("winequality-white.csv", type=["csv"])
-
 @st.cache_data(show_spinner=False)
-def get_df(ur, uw, thr):
-    df = load_wine_data(uploaded_red=ur, uploaded_white=uw)
+def get_df(thr):
+    df = load_wine_data()
     df = add_target_quality_binary(df, threshold=thr)
     return df
 
-df = get_df(uploaded_red, uploaded_white, threshold)
+df = get_df(threshold)
 
 train_btn = st.button("🚀 Entraîner le modèle", type="primary")
 
