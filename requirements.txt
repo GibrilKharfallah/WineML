@@ -1,0 +1,12 @@
+streamlit>=1.31
+scikit-learn
+imbalanced-learn
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+nbformat
+
+imblearn
+statsmodels
