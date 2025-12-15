@@ -1,12 +1,11 @@
 streamlit>=1.31
-scikit-learn
-imbalanced-learn
+scikit-learn==1.4.2
+imbalanced-learn==0.12.3
 pandas
 numpy
 matplotlib
 seaborn
 plotly
 nbformat
-
 imblearn
 statsmodels
