@@ -8,10 +8,16 @@ st.set_page_config(
 )
 
 st.title("🍷 Dashboard Machine Learning — Wine Quality")
-st.caption("Projet ML : exploration, préprocessing, modélisation (SMOTE + pipelines), évaluation et interprétabilité.")
+st.caption("Projet ML : exploration, préprocessing, modélisation, évaluation et interprétabilité.")
 
 with st.expander("📌 Contexte et objectif", expanded=True):
-    st.markdown("""…""")
+    st.markdown(
+        """
+        Ce projet explore la qualité des vins rouges et blancs à partir de mesures physico-chimiques.
+        L’objectif est de construire un modèle de classification simple et robuste, puis d’expliquer
+        ses résultats via des métriques, des courbes d’évaluation et une interprétabilité des features.
+        """
+    )
 
 tab_dash, tab_prep, tab_model, tab_eval, tab_interp = st.tabs(
     ["📊 EDA", "🧹 Préprocessing", "🤖 Modélisation", "🧪 Évaluation", "🔍 Interprétabilité"]

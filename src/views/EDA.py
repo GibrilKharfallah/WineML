@@ -17,22 +17,28 @@ def get_data():
 df = get_data()
 
 st.markdown("### 1) Statistiques descriptives")
-    st.dataframe(df.describe(include="all").T, width="stretch")
+
+st.dataframe(df.describe(include="all").T, width="stretch")
 
 st.markdown("### 2) Corrélations (numérique)")
 num_df = df.select_dtypes(include=["int64", "float64"])
 corr = num_df.corr(numeric_only=True)
 fig_corr = px.imshow(corr, aspect="auto", title="Matrice de corrélation (variables numériques)")
-    st.plotly_chart(fig_corr, width="stretch")
+
+st.plotly_chart(fig_corr, width="stretch")
 
 st.markdown("### 3) Distributions par variable")
+
 num_cols = [c for c in num_df.columns if c not in ["quality", "quality_binary"]]
+
 col = st.selectbox("Variable", num_cols, index=0)
+
 fig_hist = px.histogram(df, x=col, color="quality_binary", marginal="box", nbins=50)
-    st.plotly_chart(fig_hist, width="stretch")
+
+st.plotly_chart(fig_hist, width="stretch")
 
 st.markdown("### 4) Comparaison Rouge vs Blanc")
 xcol = st.selectbox("X", num_cols, index=0, key="xcol")
 ycol = st.selectbox("Y", num_cols, index=min(1, len(num_cols)-1), key="ycol")
 fig_scatter = px.scatter(df, x=xcol, y=ycol, color="wine type", opacity=0.6, trendline="ols")
-    st.plotly_chart(fig_scatter, width="stretch")
+st.plotly_chart(fig_scatter, width="stretch")
