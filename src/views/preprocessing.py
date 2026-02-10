@@ -33,7 +33,7 @@ def render():
 
     st.subheader("1) Cible binaire")
     fig = px.pie(df, names="quality_binary", title="Répartition de quality_binary")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.subheader("2) Outliers avec LOF (visualisation)")
     cont = st.slider("Contamination (proportion d'outliers)", 0.001, 0.05, 0.02, 0.001)
@@ -52,7 +52,7 @@ def render():
     xcol = st.selectbox("Feature X", num_cols, index=0)
     ycol = st.selectbox("Feature Y", num_cols, index=min(1, len(num_cols) - 1))
     fig2 = px.scatter(df_flags, x=xcol, y=ycol, color="is_outlier", opacity=0.6, symbol="wine type")
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, width="stretch")
 
     st.info(
         "Dans le notebook, tu peux supprimer les outliers pour obtenir X_clean/y_clean. "

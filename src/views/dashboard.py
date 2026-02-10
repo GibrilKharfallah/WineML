@@ -25,11 +25,11 @@ def render():
     c4.metric("Vins blancs", int((df["wine type"] == "white").sum()))
 
     st.subheader("Aperçu")
-    st.dataframe(df.head(20), use_container_width=True)
+    st.dataframe(df.head(20), width="stretch")
 
     st.subheader("Distribution de la cible")
     fig = px.histogram(df, x="quality_binary", color="wine type", barmode="group")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.info(
         "Utilise les onglets ci-dessus (EDA, Préprocessing, Modélisation, "

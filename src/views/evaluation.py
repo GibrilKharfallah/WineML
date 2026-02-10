@@ -30,7 +30,7 @@ def render():
         y=["0", "1"],
         title="Confusion Matrix",
     )
-    st.plotly_chart(cm_fig, use_container_width=True)
+    st.plotly_chart(cm_fig, width="stretch")
 
     st.subheader("Courbe ROC")
     fpr, tpr, _ = art.roc
@@ -41,7 +41,7 @@ def render():
         roc_fig.add_trace(go.Scatter(x=fpr, y=tpr, mode="lines", name="ROC"))
         roc_fig.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode="lines", name="Aléatoire"))
         roc_fig.update_layout(xaxis_title="False Positive Rate", yaxis_title="True Positive Rate")
-        st.plotly_chart(roc_fig, use_container_width=True)
+        st.plotly_chart(roc_fig, width="stretch")
 
     st.subheader("Precision-Recall")
     prec, rec, _ = art.pr
@@ -51,4 +51,4 @@ def render():
         pr_fig = go.Figure()
         pr_fig.add_trace(go.Scatter(x=rec, y=prec, mode="lines", name="PR"))
         pr_fig.update_layout(xaxis_title="Recall", yaxis_title="Precision")
-        st.plotly_chart(pr_fig, use_container_width=True)
+        st.plotly_chart(pr_fig, width="stretch")

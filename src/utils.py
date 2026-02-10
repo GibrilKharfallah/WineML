@@ -109,7 +109,7 @@ def add_target_quality_binary(df: pd.DataFrame, threshold: int = 7) -> pd.DataFr
 
 
 def split_xy(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Series]:
-    X = df.drop(columns=["quality_binary"])
+    X = df.drop(columns=["quality_binary", "quality"])
     y = df["quality_binary"]
     return X, y
 
